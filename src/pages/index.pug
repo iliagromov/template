@@ -1,0 +1,15 @@
+extends ../pug/templates/template
+block title
+	title Title Pages
+block append style
+block content
+	include ../pug/modules/header-module
+	main.page
+		section.banner
+			.wrapper
+				h1.page__title-h1 Title h1
+				p.page__text Any textp
+				a(href="page/page.html").page__text page
+block append style
+	
+block append script

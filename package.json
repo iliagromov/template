@@ -1,0 +1,58 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "clear": "gulp clear",
+    "static": "gulp spritePS && && gulp images && gulp fonts && gulp libs && gulp clearTrash",
+    "html": "gulp htmlBuild",
+    "styles": "gulp styles",
+    "scripts": "gulp scripts",
+    "build": "gulp build",
+    "prod": "gulp clear && yarn static && gulp htmlBuild && gulp styles && gulp scripts",
+    "dev": "gulp watch --dev --sync"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-clean": "^0.4.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-data": "^1.3.1",
+    "gulp-extract-media-queries": "^1.1.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-html-bem-validator": "^1.0.5",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-pug-linter": "^1.5.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-svg-sprite": "^1.5.0",
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-w3c-html-validator": "^2.0.0",
+    "gulp-webp": "^4.0.1",
+    "gulp.spritesmith": "^6.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "jpegtran-bin": "^5.0.2",
+    "postcss": "^8.2.9",
+    "postcss-px-to-viewport": "^1.1.1",
+    "smart-grid": "^2.1.2"
+  },
+  "browserslist": [
+    "> 0.1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}

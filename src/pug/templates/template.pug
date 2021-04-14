@@ -1,0 +1,34 @@
+include ../variables/variables
+doctype html
+html(lang="ru") 
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="icon", type="image/x-icon",  href="assets/img/favicon.ico")
+        block base
+        block title
+        block style
+            link(rel="stylesheet", href="css/base-styles.css", type="text/css")
+            link(rel="stylesheet", href="css/styles-calc.css", type="text/css")
+            
+    body
+        p #{template}
+        div 
+            p=title
+            p=message
+            p=message
+            p=viewportWidth
+            each item in breakPoints
+                div=item.width
+        block content
+        block style
+            link(rel="stylesheet", href="css/viewport/mobileFirst-"+viewportWidth+"px.css", type="text/css")
+            each breakPoint in breakPoints
+                link(rel="stylesheet", type="text/css" , media="screen and (min-width:"+breakPoint.width+"px)",  href="css/viewport/media/"+breakPoint.width+"/"+breakPoint.width+"px.css")
+	
+            //- link(rel="stylesheet", href="css/styles-calc.css", type="text/css")
+            //- link(rel="stylesheet", href="css/styles-percent.css", type="text/css") for opera
+
+        block script
+            script(src="libs/js/_all/debug-grid-create.js")
+            script(src="js/main.js")
