@@ -26,7 +26,7 @@ gulp.task('scripts', function () {
         // .pipe(uglify({
         // 	toplevel: false//жесткое сжатие js
         // }))
-        .pipe(gulpif(isDev, sourcemaps.write()))
+        // .pipe(gulpif(isDev, sourcemaps.write()))
         .pipe(gulp.dest(path.dist + 'js'))
         .pipe(gulpif(isSync, browserSync.stream()))
 

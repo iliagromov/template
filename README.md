@@ -60,3 +60,11 @@ npm run dev
 yarn clear
 yarn static
 yarn dev
+
+
+Если падает ошибка при старте проекта, сначала нужно проверпить все иморты в sass оставив толкько базовый styles
+events.js:174
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: File not found with singular glob: /home/hp/Projects/iliagromov/template/dist/css/px/media/styles-calc.css (if this was purposeful, use `allowEmpty` option)

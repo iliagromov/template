@@ -15,7 +15,8 @@ const path = require('../path.json');
 // ===============================================
 // Tasks sprite
 // ===============================================
-gulp.task('spritePS', function () {
+
+gulp.task('sprite', function () {
 
 	const srcIconPathPng = path.src + path.iconsPNG + '**/*.png';
 	const srcIconPathSvg = path.src + path.iconsSVG + '**/*.svg';
@@ -52,6 +53,7 @@ gulp.task('spritePS', function () {
 		mode: {
 			view: {
 				sprite: "../assets/icons/svg/spriteSVG.svg",
+				dest: './',
 				prefix: ".svg-",
 				dimensions: "-box",
 				bust: false,
@@ -61,45 +63,49 @@ gulp.task('spritePS', function () {
 			}
 		}
 	};
-	return gulp.src(path.src + path.iconsSVG + '**/*.svg')
-			.pipe(svgSprite())
-			.pipe(gulp.dest(path.dist + 'css'))
+	async function _spriteSVG() {
+		gulp.src('./src/assets/icons/svg/**/*.svg')
+			.pipe(svgSprite(svgSpriteConfig))
+			.pipe(gulp.dest(path.dist + 'assets'))
 			.pipe(gulp.dest(path.src + path.sprite + 'svg'));
+	}
 
 
 
-	// async function _spritePNG() {
+	async function _spritePNG() {
 
-	// 	for (let key in spritesmithOptions) {
-	// 		let option = spritesmithOptions[key];
+		for (let key in spritesmithOptions) {
+			let option = spritesmithOptions[key];
 
-	// 		gulp.src(option.srcIconPath)
-	// 			.pipe(spritesmith({
-	// 				imgName: option.imgName,
-	// 				imgPath: option.imgPath,
-	// 				cssName: option.cssName,
-	// 				cssVarMap: function (sprite) {
-	// 					sprite.name = `${sprite.name}-${option.format}`;
-	// 				}
-	// 			}))
+			gulp.src(option.srcIconPath)
+				.pipe(spritesmith({
+					imgName: option.imgName,
+					imgPath: option.imgPath,
+					cssName: option.cssName,
+					cssVarMap: function (sprite) {
+						sprite.name = `${sprite.name}-${option.format}`;
+					}
+				}))
 
-	// 			.pipe(gulp.dest(path.dist + option.pathDest))
-	// 			.pipe(gulp.dest(path.src + path.sprite + option.format))
-	// 	}
+				.pipe(gulp.dest(path.dist + option.pathDest))
+				.pipe(gulp.dest(path.src + path.sprite + option.format))
+		}
 
 
-	// }
+	}
 
-	// async function _spriteWebp() {
-	// 	return setTimeout(() => {
-	// 		gulp.src(path.src + path.sprite + 'webp/spriteWEBP.webp')
-	// 			.pipe(webp())
-	// 			.pipe(gulp.dest(path.dist + path.iconsWEBP))
-	// 			.pipe(gulp.dest(path.src + path.sprite + 'webp'))
-	// 	}, 1000);
+	async function _spriteWebp() {
+		return setTimeout(() => {
+			gulp.src(path.src + path.sprite + 'webp/spriteWEBP.webp')
+				.pipe(webp())
+				.pipe(gulp.dest(path.dist + path.iconsWEBP))
+				.pipe(gulp.dest(path.src + path.sprite + 'webp'))
+		}, 1000);
 
-	// }
+	}
 
+	
+	return _spriteSVG(), _spritePNG(), _spriteWebp();
 });
 // ===============================================
 // Tasks images
@@ -167,7 +173,7 @@ gulp.task('libs', function (done) {
 // ===============================================
 gulp.task('clearTrash', function (done) {
 	del([
-		path.src + path.sprite + 'assets',
+		path.src + path.sprite + 'svg/icons',
 		path.src + 'sass/**/*.png',
 		path.src + 'sass/**/*.webp',
 		path.src + 'sass/**/*.svg',

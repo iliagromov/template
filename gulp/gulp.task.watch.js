@@ -16,7 +16,7 @@ gulp.task('watch', gulp.series('build', function _watch(done) {
 			// tunnel: true
 		});
 	}
-	gulp.watch(path.src + path.icons, gulp.series('spritePS', 'spriteWebp'));
+	gulp.watch(path.src + path.icons, gulp.series('sprite'));
 	gulp.watch(path.src + path.images, gulp.series('images'));
 	gulp.watch(path.src + path.fonts + '**/*', gulp.series('fonts'));
 	gulp.watch(path.src + path.libs + '**/*', gulp.series('libs'));
@@ -28,7 +28,7 @@ gulp.task('watch', gulp.series('build', function _watch(done) {
 	gulp.watch(path.src + path.sass, gulp.series('stylesSass')).on('change', browserSync.reload);
 	gulp.watch(path.dist + 'css/px/**/*.css', gulp.series('stylesVp')).on('change', browserSync.reload);
 
-	gulp.watch(path.src + path.js, gulp.series('scripts'));
+	gulp.watch(path.src + path.js, gulp.series('scripts')).on('change', browserSync.reload);
 
 	gulp.watch('./configs/smartgrid.config.js', gulp.series('grid'));
 	gulp.watch('./configs/breakPoints.json', gulp.series('pug','grid'));

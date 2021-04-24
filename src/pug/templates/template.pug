@@ -9,7 +9,6 @@ html(lang="ru")
         block title
         block style
             link(rel="stylesheet", href="css/base-styles.css", type="text/css")
-            link(rel="stylesheet", href="css/styles-calc.css", type="text/css")
             
     body
         p #{template}
@@ -23,6 +22,7 @@ html(lang="ru")
         block content
         block style
             link(rel="stylesheet", href="css/viewport/mobileFirst-"+viewportWidth+"px.css", type="text/css")
+            link(rel="stylesheet", href="css/styles-sprites.css", type="text/css")
             each breakPoint in breakPoints
                 link(rel="stylesheet", type="text/css" , media="screen and (min-width:"+breakPoint.width+"px)",  href="css/viewport/media/"+breakPoint.width+"/"+breakPoint.width+"px.css")
 	

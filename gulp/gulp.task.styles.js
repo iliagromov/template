@@ -25,7 +25,7 @@ const path = require('../path.json');
 
 
 const sassFiles = [
-	path.src + 'sass/+(base-styles|styles-calc|styles-percent).sass'
+	path.src + 'sass/+(styles-sprites|base-styles|styles-calc|styles-percent).sass'
 ];
 
 // gulp.task('stylesClean', function (done) {
