@@ -26,9 +26,11 @@ gulp.task('watch', gulp.series('build', function _watch(done) {
 	gulp.watch(path.dist + '*.html', gulp.series('htmlProduction'));
 
 	gulp.watch(path.src + path.sass, gulp.series('stylesSass')).on('change', browserSync.reload);
+	gulp.watch(path.src + 'components/**/*.sass', gulp.series('stylesComponents')).on('change', browserSync.reload);
 	gulp.watch(path.dist + 'css/px/**/*.css', gulp.series('stylesVp')).on('change', browserSync.reload);
 
-	gulp.watch(path.src + path.js, gulp.series('scripts')).on('change', browserSync.reload);
+	gulp.watch(path.src + path.js, gulp.series('scriptsAll')).on('change', browserSync.reload);
+	gulp.watch(path.src + 'components/**/*.js', gulp.series('scriptsComponents')).on('change', browserSync.reload);
 
 	gulp.watch('./configs/smartgrid.config.js', gulp.series('grid'));
 	gulp.watch('./configs/breakPoints.json', gulp.series('pug','grid'));

@@ -68,3 +68,10 @@ events.js:174
       ^
 
 Error: File not found with singular glob: /home/hp/Projects/iliagromov/template/dist/css/px/media/styles-calc.css (if this was purposeful, use `allowEmpty` option)
+
+fixme 
+nameing files
+html.valid
+bemvalid
+add
+gulp cli crate component

@@ -34,7 +34,11 @@ const sassFiles = [
 // 	// return del([path.dist + 'css/viewport/media/**/*'])
 // 	// done();
 // });
-
+gulp.task('stylesComponents', function(){
+	return gulp.src(path.src + 'components/**/*.sass')
+		.pipe(concat('_allComponents.sass'))
+		.pipe(gulp.dest(path.src + 'sass'))
+});
 gulp.task('stylesSass', function (done) {
 	return gulp.src(sassFiles)
 		.pipe(sass().on('error', sass.logError))
@@ -95,4 +99,4 @@ gulp.task('stylesVp', function (done) {
 	return _stylesVp();
 });
 
-gulp.task('styles', gulp.series('stylesSass', 'stylesVp'));
+gulp.task('styles', gulp.series('stylesComponents', 'stylesSass', 'stylesVp'));

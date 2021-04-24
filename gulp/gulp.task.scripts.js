@@ -17,7 +17,12 @@ const jsFiles = [
     path.src + path.js
 ];
 
-gulp.task('scripts', function () {
+gulp.task('scriptsComponents', function(){
+	return gulp.src(path.src + 'components/**/*.js')
+		.pipe(concat('_allComponents.js'))
+		.pipe(gulp.dest(path.src + 'js'))
+});
+gulp.task('scriptsAll', function () {
     return gulp.src(jsFiles)
         .pipe(gulpif(isDev, sourcemaps.init()))
         // .pipe(concat('all.js')) 
@@ -30,3 +35,4 @@ gulp.task('scripts', function () {
         .pipe(gulpif(isSync, browserSync.stream()))
 
 });
+gulp.task('scripts', gulp.series('scriptsComponents', 'scriptsAll'));
