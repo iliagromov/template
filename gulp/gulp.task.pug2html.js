@@ -2,9 +2,6 @@ const gulp = require('gulp');
 const gulpif = require('gulp-if');
 const browserSync = require('browser-sync').create();
 
-
-
-
 const isDev = (process.argv.indexOf('--dev') !== -1);
 const isProd = !isDev;
 const isSync = (process.argv.indexOf('--sync') !== -1);
@@ -26,6 +23,7 @@ const pugFiles = [
     '!./src/pug/includes/**/*.pug',
     '!./src/pug/mixins/**/*.pug',
     '!./src/pug/variables/**/*.pug',
+    '!./src/pug/data/**/*.pug',
 ];
 
 const pug = require('gulp-pug');
@@ -52,7 +50,7 @@ gulp.task('html', function () {
 
 gulp.task('pug', function () {
     async function _pug() {
-        // delete require.cache[require.resolve('../configs/breakPoints.json')];
+        delete require.cache[require.resolve('../configs/breakPoints.json')];
         gulp.src(pugFiles)
             .pipe(plumber())
             .pipe(pugLinter({ reporter: 'default' }))
@@ -74,13 +72,9 @@ gulp.task('pug', function () {
 
             // ex 3
 
-            // .pipe(data(function(file) {
-            //     return JSON.parse(fs.readFileSync('data/data.json'))
-            // }))
-            // .pipe(data(function (file) {
-            //     return  JSON.parse(fs.readFileSync('configs/breakPoints.json'));
-
-            // }))
+            .pipe(data(function (file) {
+                return JSON.parse(fs.readFileSync('data/data.json'))
+            }))
 
             .pipe(data(function (file) {
                 for (let key in json.breakPoints) {
@@ -98,16 +92,9 @@ gulp.task('pug', function () {
             // .pipe(htmlBemValidator())
             .pipe(gulp.dest(path.dist))
             .pipe(gulpif(isSync, browserSync.stream()));
-
-
     }
-
-
     return _pug();
-
-
 });
-
 
 gulp.task('htmlProduction', function () {
     return gulp.src(path.dist + '*.html')

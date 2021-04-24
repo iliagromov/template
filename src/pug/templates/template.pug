@@ -1,4 +1,3 @@
-include ../variables/variables
 doctype html
 html(lang="ru") 
     head
@@ -11,14 +10,9 @@ html(lang="ru")
             link(rel="stylesheet", href="css/base-styles.css", type="text/css")
             
     body
-        p #{template}
-        div 
-            p=title
-            p=message
-            p=message
-            p=viewportWidth
-            each item in breakPoints
-                div=item.width
+        include ../variables/useVariables
+        include ../data/useDataJSON
+        
         block content
         block style
             link(rel="stylesheet", href="css/viewport/mobileFirst-"+viewportWidth+"px.css", type="text/css")

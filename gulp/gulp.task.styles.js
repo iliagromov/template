@@ -96,5 +96,3 @@ gulp.task('stylesVp', function (done) {
 });
 
 gulp.task('styles', gulp.series('stylesSass', 'stylesVp'));
-
-// удаляю только медиа

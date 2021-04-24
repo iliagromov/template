@@ -43,22 +43,3 @@ gulp.task('build', gulp.parallel('htmlBuild', 'styles', 'scripts'));
 // Tasks watch
 // ===============================================
 const watch = require('./gulp/gulp.task.watch');
-
-const path = require('./path.json');
-const svgSprite = require('gulp-svg-sprite');
-
- // Basic configuration example
- let config = {
-    mode: {
-      css: { // Activate the «css» mode
-        render: {
-          css: true // Activate CSS output (with default options)
-        }
-      }
-    }
-  };
-gulp.task('spriteSVG', function () {
-	return gulp.src('./src/assets/*.svg')
-		.pipe(svgSprite(config))
-		.pipe(gulp.dest(path.src + path.sprite + 'svg'));
-})

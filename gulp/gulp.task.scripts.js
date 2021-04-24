@@ -13,7 +13,6 @@ const isSync = (process.argv.indexOf('--sync') !== -1);
 
 const path = require('../path.json');
 
-
 const jsFiles = [
     path.src + path.js
 ];
