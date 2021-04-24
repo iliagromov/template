@@ -75,3 +75,4 @@ html.valid
 bemvalid
 add
 gulp cli crate component
+удаление файлов 
