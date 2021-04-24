@@ -19,8 +19,8 @@ const jsFiles = [
 
 gulp.task('scriptsComponents', function(){
 	return gulp.src(path.src + 'components/**/*.js')
-		.pipe(concat('_allComponents.js'))
-		.pipe(gulp.dest(path.src + 'js'))
+		// .pipe(concat('_allComponents.js'))
+		.pipe(gulp.dest(path.dest + 'js'))
 });
 gulp.task('scriptsAll', function () {
     return gulp.src(jsFiles)

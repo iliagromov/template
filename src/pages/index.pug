@@ -3,7 +3,7 @@ block title
 	title Title Pages
 block append style
 block content
-	//- include ../pug/modules/header-module
+	include ../components/debuggrid/debuggrid.component.pug
 	include ../components/header/header.component.pug
 	main.page
 		section.banner
@@ -14,3 +14,5 @@ block content
 block append style
 	
 block append script
+	script(src="/js/debuggrid/debuggrid.component.js")
+	script(src="/js/header/header.component.js")
