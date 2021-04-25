@@ -1,11 +1,11 @@
 const gulp = require('gulp');
 const fs = require('fs');
 const del = require('del');
-
+const path = require('../path.json');
 const argv = require('yargs').argv;
 const formatDefault = ['pug', 'sass'];
-const isCreateComponent = ((argv.create === undefined)) ? false : String(argv.create);
-const isRemoveComponent = ((argv.remove === undefined)) ? false : String(argv.remove);
+const isCreateComponent = (argv.c === undefined) ? false : String(argv.c);
+const isRemoveComponent = (argv.r === undefined) ? false : String(argv.r);
 
 gulp.task('component', function () {
     function _writeFile(componentName, format) {
@@ -15,7 +15,7 @@ gulp.task('component', function () {
         } else {
             fileContent = `//-${componentName}`
         }
-        fs.writeFile(`./src/components/${componentName}/${componentName}.component.${format}`, fileContent, (err) => {
+        fs.writeFile(path.src + `components/${componentName}/${componentName}.component.${format}`, fileContent, (err) => {
             if (err) throw err;
             console.log(`The file ${componentName}.component.${format} was succesfully saved!`);
         });
@@ -23,8 +23,8 @@ gulp.task('component', function () {
 
     async function _create() {
         if (isCreateComponent && isCreateComponent !== "true") {
-            let componentName = argv.create;
-            fs.mkdirSync('./src/components/' + componentName);
+            let componentName = isCreateComponent;
+            fs.mkdirSync(path.src + 'components/' + componentName);
 
             for (let i = 0; i < formatDefault.length; i++) {
                 _writeFile(componentName, formatDefault[i]);
@@ -34,11 +34,11 @@ gulp.task('component', function () {
                 _writeFile(componentName, 'js');
             }
         } else if (isRemoveComponent && isRemoveComponent !== "true") {
-            console.log(isRemoveComponent);
-            del(`./src/components/${argv.remove}`);
+            let componentName = isRemoveComponent;
+            del(path.src + `components/${componentName}`);
         }
         else {
-            throw console.error('<name> dosn`t exist use yarn "component -flag" <NAME>');
+            throw console.error('<name> dosn`t exist use yarn cmp --flag <NAME>');
         }
     }
     return _create();
