@@ -12,7 +12,8 @@
     "build": "gulp build",
     "prod": "gulp clear && yarn static && gulp htmlBuild && gulp styles && gulp scripts",
     "dev": "gulp watch --dev --sync",
-    "component":"gulp component --create"
+    "component -c":"gulp component --create",
+    "component -r":"gulp component --remove"
   },
   "keywords": [],
   "author": "",

@@ -1,52 +1,48 @@
 const gulp = require('gulp');
 const fs = require('fs');
-const gulpif = require('gulp-if');
+const del = require('del');
 
-var argv = require('yargs').argv;
-const pug = (process.argv.indexOf('-pug') !== -1);
-var isCreateComponent = (argv.create === undefined) ? false : true;
+const argv = require('yargs').argv;
+const formatDefault = ['pug', 'sass'];
+const isCreateComponent = ((argv.create === undefined)) ? false : String(argv.create);
+const isRemoveComponent = ((argv.remove === undefined)) ? false : String(argv.remove);
+
 gulp.task('component', function () {
-    // console.log(isCreateComponent);
+    function _writeFile(componentName, format) {
+        let fileContent;
+        if(format !== 'pug'){
+            fileContent = `/*${componentName}*/`
+        } else {
+            fileContent = `//-${componentName}`
+        }
+        fs.writeFile(`./src/components/${componentName}/${componentName}.component.${format}`, fileContent, (err) => {
+            if (err) throw err;
+            console.log(`The file ${componentName}.component.${format} was succesfully saved!`);
+        });
+    }
 
-    // console.log(argv.pug);       
-    // console.log(argv.sass);       
-    // console.log(argv.js);
     async function _create() {
-        if (argv.create) {
-            // if(argv.create){} //bool
+        if (isCreateComponent && isCreateComponent !== "true") {
             let componentName = argv.create;
-            console.log(componentName);
             fs.mkdirSync('./src/components/' + componentName);
-            // let filepathPug = ;
-            var fileContent = "Hello World!";
-            // for(let i = 0; i < 2; i++){
 
-            // }
-            fs.writeFile('./src/components/'+componentName+'/'+componentName+'.component.pug', '//-'+componentName, (err) => {
-                if (err) throw err;
-            
-                console.log("The file was succesfully saved!");
-            });
-            fs.writeFile('./src/components/'+componentName+'/'+componentName+'.component.sass', '/*'+componentName+'*/', (err) => {
-                if (err) throw err;
-            
-                console.log("The file was succesfully saved!");
-            });
+            for (let i = 0; i < formatDefault.length; i++) {
+                _writeFile(componentName, formatDefault[i]);
+            }
 
             if (argv.js) {
-                console.log(argv.js);
-                fs.writeFile('./src/components/'+componentName+'/'+componentName+'.component.js', '/*'+componentName+'*/', (err) => {
-                    if (err) throw err;
-                
-                    console.log("The file was succesfully saved!");
-                });
+                _writeFile(componentName, 'js');
             }
-        } else {
-            console.log('use flag --create <name>');
+        } else if (isRemoveComponent && isRemoveComponent !== "true") {
+            console.log(isRemoveComponent);
+            del(`./src/components/${argv.remove}`);
+        }
+        else {
+            throw console.error('<name> dosn`t exist use yarn "component -flag" <NAME>');
         }
     }
     return _create();
 });
-//ex. gulp component --create <name>
-//if you need js use flag --js
-// ex. gulp component --create <name> --js
+
+// ex. gulp component --create || gulp component --create <name> --js (if you need js use flag --js) 
+// ex. gulp component --remove <name>
