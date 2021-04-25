@@ -1,8 +1,5 @@
-/* __debugGrid__ */
-.debugGrid
-    @include debug(rgba(0, 0, 0, 0.4), 1px solid #ff0)
-    @include debugBtn()
-/* __debugGrid__ */
+/*excomponent*/
+.someComponent
 .header
     .parent
         +row-flex()
@@ -24,4 +21,8 @@
                 font-size: 60px
                 width: 768px
                 margin: 3px 4px 3px
-.someComponent
+/* __debugGrid__ */
+.debugGrid
+    @include debug(rgba(0, 0, 0, 0.4), 1px solid #ff0)
+    @include debugBtn()
+/* __debugGrid__ */

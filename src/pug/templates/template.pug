@@ -2,13 +2,32 @@ doctype html
 html(lang="ru") 
     head
         meta(charset="utf-8")
+        meta(http-equiv="x-ua-compatible", content="ie=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="author" content="Ilia Gromov")
         link(rel="icon", type="image/x-icon",  href="assets/img/favicon.ico")
         block base
         block title
         block style
             link(rel="stylesheet", href="css/base-styles.css", type="text/css")
-            
+        block socialMetaTags
+            meta(property="fb:app_id" content="")
+            meta(property="og:title", content="Ilia Gromov")
+            meta(property="og:description", content="Frontend developer. Разработаю Вашу идею на профессиональном уровне!")
+            meta(property="og:type", content="website")
+            meta(property="og:url", content="https://iliagromov.github.io/")
+            meta(property="og:image", content="https://iliagromov.github.io/assets/img/img-about-2.jpg")
+            meta(property="vk:image", content="https://iliagromov.github.io/assets/img/img-about-2-vk.jpg")
+            meta(property="fb:image", content="https://iliagromov.github.io/assets/img/img-about-4.jpg")
+            meta(property="twitter:image", content="https://iliagromov.github.io/assets/img/img-about-3.jpg")
+            meta(property="og:image:secure_url", content="https://iliagromov.github.io/assets/img/img-about-2.jpg")
+            meta(property="og:image:type", content="image/jpeg")
+            meta(property="og:image:width", content="500")
+            meta(property="og:image:height", content="300")
+            meta(property="twitter:card", content="summary")
+            meta(property="twitter:site", content="https://iliagromov.github.io/")
+            meta(property="twitter:description", content="")
+            meta(property="twitter:creator", content="Ilia Gromov")
     body
         include ../variables/useVariables
         include ../data/useDataJSON

@@ -43,3 +43,4 @@ gulp.task('build', gulp.parallel('htmlBuild', 'styles', 'scripts'));
 // Tasks watch
 // ===============================================
 const watch = require('./gulp/gulp.task.watch');
+const components = require('./gulp/gulp.create.components');

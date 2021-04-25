@@ -11,13 +11,15 @@
     "scripts": "gulp scripts",
     "build": "gulp build",
     "prod": "gulp clear && yarn static && gulp htmlBuild && gulp styles && gulp scripts",
-    "dev": "gulp watch --dev --sync"
+    "dev": "gulp watch --dev --sync",
+    "component":"gulp component --create"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gulp-clean": "^0.4.0"
+    "gulp-clean": "^0.4.0",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.14",

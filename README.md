@@ -71,8 +71,10 @@ Error: File not found with singular glob: /home/hp/Projects/iliagromov/template/
 
 fixme 
 nameing files
-html.valid
-bemvalid
-add
 gulp cli crate component
 удаление файлов 
+gulp component header -pug -sass 
+{
+    <name.component.pug>
+    name.component.sass
+}

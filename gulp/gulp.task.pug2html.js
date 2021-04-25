@@ -30,7 +30,7 @@ const pug = require('gulp-pug');
 const pugLinter = require('gulp-pug-linter');
 const plumber = require('gulp-plumber');
 const htmlValidator = require('gulp-w3c-html-validator');
-// const htmlBemValidator = require('gulp-html-bem-validator');
+const htmlBemValidator = require('gulp-html-bem-validator');
 
 const data = require('gulp-data');
 const fs = require('fs');
@@ -88,7 +88,7 @@ gulp.task('pug', function () {
             }))
             .pipe(pug())
 
-            // .pipe(htmlValidator())
+            .pipe(htmlValidator())
             // .pipe(htmlBemValidator())
             .pipe(gulp.dest(path.dist))
             .pipe(gulpif(isSync, browserSync.stream()));
