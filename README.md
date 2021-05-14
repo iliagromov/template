@@ -69,3 +69,5 @@ return remove component
 найминг
 Проверка грида 
 Пути для pug чтобы не писать pointHall ../../../../../../
+
+ssh 
