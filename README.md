@@ -63,3 +63,9 @@ return
 # Remove componet
 yarn cmp --r some2
 return remove component
+
+удаление файлов 
+тесты перед пушем 
+найминг
+Проверка грида 
+Пути для pug чтобы не писать pointHall ../../../../../../
