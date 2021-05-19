@@ -4,6 +4,10 @@ const gulp = require('gulp');
 // Task clear
 // ===============================================
 const clear = require('./gulp/gulp.task.clear');
+// ===============================================
+// Task cleanRemoveFiles
+// ===============================================
+const cleanRemoveFiles = require('./gulp/gulp.task.cleanRemoveFiles');
 
 
 // ===============================================

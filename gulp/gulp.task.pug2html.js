@@ -12,7 +12,6 @@ const htmlFiles = [
     path.src + path.html
 ];
 const pugFiles = [
-    // path.src + 'pages/**/*.pug',
     './src/pages/**/*.pug',
     './src/pug/**/*.pug',
     '!./src/pug/**/content.pug',
@@ -45,7 +44,7 @@ let objBP = {
 gulp.task('html', function () {
     return gulp.src(htmlFiles)
         .pipe(gulp.dest(path.dist))
-        .pipe(gulpif(isSync, browserSync.stream()));
+        .pipe(browserSync.stream());
 })
 
 gulp.task('pug', function () {
@@ -91,7 +90,7 @@ gulp.task('pug', function () {
             .pipe(htmlValidator())
             // .pipe(htmlBemValidator())
             .pipe(gulp.dest(path.dist))
-            .pipe(gulpif(isSync, browserSync.stream()));
+            .pipe(browserSync.stream());
     }
     return _pug();
 });
@@ -99,7 +98,7 @@ gulp.task('pug', function () {
 gulp.task('htmlProduction', function () {
     return gulp.src(path.dist + '*.html')
         .pipe(gulp.dest(path.root))
-        .pipe(gulpif(isSync, browserSync.stream()));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('htmlBuild', gulp.series('html', 'pug', 'htmlProduction'));

@@ -11,7 +11,7 @@
     "scripts": "gulp scripts",
     "build": "gulp build",
     "prod": "gulp clear && yarn static && gulp htmlBuild && gulp styles && gulp scripts",
-    "dev": "gulp watch --dev --sync",
+    "dev": "gulp cleanRemoveFiles && gulp watch --dev --sync",
     "cmp":"gulp component"
   },
   "keywords": [],

@@ -22,8 +22,9 @@ gulp.task('watch', gulp.series('build', function _watch(done) {
 	gulp.watch(path.src + path.libs + '**/*', gulp.series('libs'));
 
 	gulp.watch(path.src + path.html, gulp.series('html'));
-	gulp.watch(path.src + path.pug, gulp.series('pug')).on('change', browserSync.reload);
+	gulp.watch(path.src + path.pug, gulp.series('pug'));
 	gulp.watch(path.dist + '*.html', gulp.series('htmlProduction'));
+	gulp.watch([path.dist + '**/*.html', '!dist/*.html']).on('change', browserSync.reload);
 
 	gulp.watch(path.src + path.sass, gulp.series('stylesSass')).on('change', browserSync.reload);
 	gulp.watch(path.src + 'components/**/*.sass', gulp.series('stylesComponents')).on('change', browserSync.reload);
