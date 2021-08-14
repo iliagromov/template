@@ -82,6 +82,14 @@ gulp.task('pug', function () {
                     let br = {};
                     br[key] = { width: breakPoint };
                     Object.assign(objBP.breakPoints, br);
+                    // let allCarsObj = {};
+// for (let value in allCars) {
+// 	if (allCarsObj.hasOwnProperty(allCars[value].brand)) {
+// 		Object.assign(allCarsObj[allCars[value].brand], { [allCars[value].model]: allCars[value] });
+// 	} else {
+// 		Object.assign(allCarsObj, { [allCars[value].brand]: { [allCars[value].model]: allCars[value] } })
+// 	}
+// }
                 }
                 return objBP;
             }))
