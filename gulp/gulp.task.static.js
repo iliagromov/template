@@ -125,6 +125,8 @@ gulp.task('images', function (done) {
 						// fix me condition if если картинка уже минифицирована
 						// .pipe(gulpif(folder.dist + path.images , imagemin()))
 						// use Adv
+						/*
+						
 						.pipe(imagemin([
 							imageminMozjpeg(settings.mozjpeg),
 							imagemin.gifsicle(settings.gifsicle),
@@ -135,7 +137,7 @@ gulp.task('images', function (done) {
 						}, {
 							silent: false // Don't log the number of images that have been minified. // Default: false 
 						})
-						)
+						)*/
 						.pipe(gulp.dest(path.dist + path.images)),
 					gulp.src([path.src + path.images + '/**/*.{jpg,jpeg,png}'])
 						.pipe(webp())

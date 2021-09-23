@@ -7,8 +7,9 @@ yarn static
 yarn dev
 
 # Start project 
-yarn static
-yarn dev
+yarn
+yarn static // собирает статику gulp sprite && gulp images && gulp fonts && gulp libs && gulp clearTrash
+yarn dev // запускает вотчер и собирает компоненты
 
 # Prod project 
 yarn prod

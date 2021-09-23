@@ -1,7 +1,7 @@
 module.exports = {
     plugins: {
       'postcss-px-to-viewport': {
-        unitToConvert: 'px',
+        unitToConvert: 'em',
         unitPrecision: 5, // точки после запятой
         propList: ['*'],// параметры например не перводить межбуквенный интервал или position
         viewportUnit: 'vw',

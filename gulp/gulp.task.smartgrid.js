@@ -10,9 +10,5 @@ gulp.task('grid', function (done) {
 	settings.filename = 'smart-grid-calc';
 	smartgrid('./src/sass/smartgrid', settings);
 
-	settings.offset = '3.1%';
-	settings.filename = 'smart-grid-percent';
-	smartgrid('./src/sass/smartgrid', settings);
-
 	done();
 });
