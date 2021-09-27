@@ -1,21 +1,22 @@
 let debug = 'debug';
-
-function divCreating(param) {
+function divCreating(param, cls) {
     var debugGrid = document.querySelector(param);
     let divCreate = document.createElement('div');
+    cls ? divCreate.classList.add(cls) :  divCreate.classList.add('wrapper');
     debugGrid.appendChild(divCreate);
-
+    
     let params = '.debugGrid div';
     let debugGridDivAll = document.querySelectorAll(params);
     if (debugGridDivAll.length <= 1) {
-        divCreating(params);
+        divCreating(params, "parentFlex");
     }
 
     if (debugGridDivAll.length >= 2 && debugGridDivAll.length <= 13) {
         let params = '.debugGrid div div';
         let debugGrid = document.querySelectorAll(params);
+        // FIXME: ГЕНЕРИРОВАТЬ В СООТВЕТСВИИ С НАСТРОЙКОЙ
         if (debugGrid.length <= 12) {
-            divCreating(params);
+            divCreating(params, "childFlex");
         }
     }
 }

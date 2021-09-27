@@ -46,9 +46,7 @@ html(lang="ru")
             each breakPoint in breakPoints
                 link(rel="stylesheet", type="text/css" , media="screen and (min-width:"+breakPoint.width+"px)",  href="css/viewport/media/"+breakPoint.width+"/"+breakPoint.width+"px.css")
 	
-            //- link(rel="stylesheet", href="css/styles-calc.css", type="text/css")
-            //- link(rel="stylesheet", href="css/styles-percent.css", type="text/css") for opera
+            //- link(rel="stylesheet", href="css/styles-calc.css", type="text/css") // if you want use old style programming
 
         block script
-            //- script(src="libs/js/_all/debug-grid-create.js")
             script(src="js/main.js")
