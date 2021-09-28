@@ -34,7 +34,10 @@ Simple import sprite.scss in your main.sass and use class in html selector
 ex.
 <img class="iconName">
 
-
+img(src="assets/icons/svg/spriteSVG.svg#mouse" alt="").svg-mouse-box
+div.svg-mouse.svg-mouse-box
+div.svg-iconFacebookGray-box.svg-iconFacebookGray
+div.svg-iconInstagramGray-box.svg-iconInstagramGray
 # Vmin Vmax
 Vmin использует размер меньшей стороны. То есть если высота окна браузера меньше ширины, 1 vmin будет равен 1 vh. Если ширина браузера меньше его высоты, 1 vmin равен 1 vw.
 
