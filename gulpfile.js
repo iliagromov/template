@@ -38,13 +38,28 @@ const grid = require('./gulp/gulp.task.smartgrid');
 const script = require('./gulp/gulp.task.scripts');
 
 // ===============================================
-// Tasks
+// Tasks build
 // ===============================================
 
 gulp.task('build', gulp.parallel('htmlBuild', 'styles', 'scripts'));
 
 // ===============================================
+// Tasks dist to backend
+// ===============================================
+
+const dist = require('./gulp/gulp.task.distToBackend');
+
+
+// ===============================================
+// Tasks create components
+// ===============================================
+
+const components = require('./gulp/gulp.create.components');
+
+
+// ===============================================
 // Tasks watch
 // ===============================================
 const watch = require('./gulp/gulp.task.watch');
-const components = require('./gulp/gulp.create.components');
+
+

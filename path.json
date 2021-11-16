@@ -2,6 +2,7 @@
     "root": "./",
     "src": "src/",
     "dist": "dist/",
+    "backend": "backend/wp-content/themes/factoring/",
     "html":"**/*.html",
     "pug": "**/*.pug",
     "sass":"sass/**/*.sass",

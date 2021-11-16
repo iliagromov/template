@@ -97,3 +97,22 @@ sudo gedit /etc/apache2/sites-available/tfaza.conf
 
 
 </VirtualHost>
+
+<VirtualHost *:80>
+	 ServerAlias aroma-business.io http://www.aroma-business.io
+         DocumentRoot /home/hp/Projects/aroma-business.io/backend
+        
+         <Directory /home/hp/Projects/aroma-business.io/backend>
+          	RewriteEngine on
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule . index.php
+	   	 
+              	Options Indexes FollowSymLinks
+		AllowOverride All
+		Require all granted
+		 
+         </Directory>
+
+
+</VirtualHost>
