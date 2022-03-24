@@ -20,6 +20,7 @@ const pugFiles = [
     '!./src/pug/templates/**/*.pug',
     '!./src/pug/common/**/*.pug',
     '!./src/pug/includes/**/*.pug',
+    '!./src/pug/meta/**/*.pug',
     '!./src/pug/mixins/**/*.pug',
     '!./src/pug/variables/**/*.pug',
     '!./src/pug/data/**/*.pug',
@@ -83,19 +84,19 @@ gulp.task('pug', function () {
                     br[key] = { width: breakPoint };
                     Object.assign(objBP.breakPoints, br);
                     // let allCarsObj = {};
-// for (let value in allCars) {
-// 	if (allCarsObj.hasOwnProperty(allCars[value].brand)) {
-// 		Object.assign(allCarsObj[allCars[value].brand], { [allCars[value].model]: allCars[value] });
-// 	} else {
-// 		Object.assign(allCarsObj, { [allCars[value].brand]: { [allCars[value].model]: allCars[value] } })
-// 	}
-// }
+                    // for (let value in allCars) {
+                    // 	if (allCarsObj.hasOwnProperty(allCars[value].brand)) {
+                    // 		Object.assign(allCarsObj[allCars[value].brand], { [allCars[value].model]: allCars[value] });
+                    // 	} else {
+                    // 		Object.assign(allCarsObj, { [allCars[value].brand]: { [allCars[value].model]: allCars[value] } })
+                    // 	}
+                    // }
                 }
                 return objBP;
             }))
             .pipe(pug())
 
-            .pipe(htmlValidator())
+            // .pipe(htmlValidator())
             // .pipe(htmlBemValidator())
             .pipe(gulp.dest(path.dist))
             .pipe(browserSync.stream());
@@ -109,4 +110,4 @@ gulp.task('htmlProduction', function () {
         .pipe(browserSync.stream());
 });
 
-gulp.task('htmlBuild', gulp.series('html', 'pug', 'htmlProduction'));
+gulp.task('htmlBuild', gulp.series('html', 'pug'));

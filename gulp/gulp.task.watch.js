@@ -23,12 +23,12 @@ gulp.task('watch', gulp.series('build', function _watch(done) {
 
 	gulp.watch(path.src + path.html, gulp.series('html'));
 	gulp.watch(path.src + path.pug, gulp.series('pug'));
-	gulp.watch(path.dist + '*.html', gulp.series('htmlProduction'));
+	// gulp.watch(path.dist + '*.html', gulp.series('htmlProduction'));
 	gulp.watch([path.dist + '**/*.html', '!dist/*.html']).on('change', browserSync.reload);
 
 	gulp.watch(path.src + path.sass, gulp.series('stylesSass')).on('change', browserSync.reload);
 	gulp.watch(path.src + 'components/**/*.sass', gulp.series('stylesComponents')).on('change', browserSync.reload);
-	gulp.watch(path.dist + 'css/px/**/*.css', gulp.series('stylesVp')).on('change', browserSync.reload);
+	// gulp.watch(path.dist + 'css/px/**/*.css', gulp.series('stylesVp')).on('change', browserSync.reload);
 
 	gulp.watch(path.src + path.js, gulp.series('scriptsAll')).on('change', browserSync.reload);
 	gulp.watch(path.src + 'components/**/*.js', gulp.series('scriptsComponents')).on('change', browserSync.reload);
@@ -36,6 +36,9 @@ gulp.task('watch', gulp.series('build', function _watch(done) {
 	gulp.watch('./configs/smartgrid.config.js', gulp.series('grid'));
 	gulp.watch('./configs/breakPoints.json', gulp.series('pug','grid'));
 	gulp.watch('./configs/postcss.config.js', gulp.series('styles'));
+	
+
+	// gulp.watch(path.dist + '**/*', gulp.series('dist'));
 
 	done();
 }));

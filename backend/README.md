@@ -116,3 +116,55 @@ sudo gedit /etc/apache2/sites-available/tfaza.conf
 
 
 </VirtualHost>
+sudo a2ensite dr.krysin.io
+
+
+<VirtualHost *:80>
+	 ServerAlias wi.site https://www.wi.site
+         DocumentRoot /home/hp/Projects/wellbeing-index/build
+        DirectoryIndex index.php
+         <Directory /home/hp/Projects/wellbeing-index/build>
+         	AllowOverride All
+		Require all granted
+         
+         </Directory>
+
+
+</VirtualHost>
+
+<VirtualHost *:80>
+	 ServerAlias vue.io https://www.vue.io/
+         DocumentRoot /home/hp/Projects/vue.dev.io/vue.io/backend
+        DirectoryIndex index.php
+         <Directory /home/hp/Projects/vue.dev.io/vue.io/backend>
+         	RewriteEngine on
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule . index.php
+	   	 
+              	Options Indexes FollowSymLinks
+		AllowOverride All
+		Require all granted
+         
+         </Directory>
+
+
+</VirtualHost>
+<VirtualHost *:80>
+	ServerAlias leilyyoga.io https://www.leilyyoga.io/
+        DocumentRoot /home/hp/Projects/leilyyoga/backend
+        DirectoryIndex index.php
+         <Directory /home/hp/Projects/leilyyoga/backend>
+         	RewriteEngine on
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule . index.php
+	   	 
+              	Options Indexes FollowSymLinks
+		AllowOverride All
+		Require all granted
+         
+         </Directory>
+
+
+</VirtualHost>

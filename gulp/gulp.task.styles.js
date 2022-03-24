@@ -44,20 +44,20 @@ gulp.task('stylesSass', function (done) {
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(gcmq())
-		// .pipe(gulpif(isProd, cleanCSS({
-		// 	level: {
-		// 		2: {
-		// 		all: true, // sets all values to `false`
-		// 		}
-		// 	}
-		// })))
+		.pipe(gulpif(isProd, cleanCSS({
+			level: {
+				2: {
+				all: true, // sets all values to `false`
+				}
+			}
+		})))
 		// if use pxtoviewport simple
 		// .pipe(postcss([pxtoviewport(settings.plugins['postcss-px-to-viewport'])]))
 		.pipe(gulpif(isDev, sourcemaps.write()))
 		.pipe(gulp.dest(path.dist + 'css'))
-		.pipe(gulp.dest(path.dist + 'css/px'))
-		.pipe(gemq())
-		.pipe(gulp.dest(path.dist + 'css/px/media'))
+		// .pipe(gulp.dest(path.dist + 'css/px'))
+		// .pipe(gemq())
+		// .pipe(gulp.dest(path.dist + 'css/px/media'))
 		.pipe(gulpif(isSync, browserSync.stream()));
 });
 
@@ -99,4 +99,4 @@ gulp.task('stylesVp', function (done) {
 	return _stylesVp();
 });
 
-gulp.task('styles', gulp.series('stylesComponents', 'stylesSass', 'stylesVp'));
+gulp.task('styles', gulp.series('stylesComponents', 'stylesSass'));

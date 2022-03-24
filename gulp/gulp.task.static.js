@@ -100,7 +100,8 @@ gulp.task('sprite', function () {
 				.pipe(webp())
 				.pipe(gulp.dest(path.dist + path.iconsWEBP))
 				.pipe(gulp.dest(path.src + path.sprite + 'webp'))
-		}, 1000);
+		}, 2000);
+		//FIFXME: ЕСЛИ МНОГО ФАЙЛОВ ПАДАЕТ ОШИБКА. ИСПРАВИТЬ. СДЕЛАТЬ СИНХРОННО.
 
 	}
 
@@ -125,19 +126,17 @@ gulp.task('images', function (done) {
 						// fix me condition if если картинка уже минифицирована
 						// .pipe(gulpif(folder.dist + path.images , imagemin()))
 						// use Adv
-						/*
-						
-						.pipe(imagemin([
-							imageminMozjpeg(settings.mozjpeg),
-							imagemin.gifsicle(settings.gifsicle),
-							imagemin.optipng(settings.optipng),
-							imagemin.svgo(settings.svgo)
-						], {
-							verbose: true // Enabling this will log info on every image passed to gulp-imagemin: // Default: false 
-						}, {
-							silent: false // Don't log the number of images that have been minified. // Default: false 
-						})
-						)*/
+						// .pipe(imagemin([
+						// 	imageminMozjpeg(settings.mozjpeg),
+						// 	imagemin.gifsicle(settings.gifsicle),
+						// 	imagemin.optipng(settings.optipng),
+						// 	imagemin.svgo(settings.svgo)
+						// ], {
+						// 	verbose: true // Enabling this will log info on every image passed to gulp-imagemin: // Default: false 
+						// }, {
+						// 	silent: false // Don't log the number of images that have been minified. // Default: false 
+						// })
+						// )
 						.pipe(gulp.dest(path.dist + path.images)),
 					gulp.src([path.src + path.images + '/**/*.{jpg,jpeg,png}'])
 						.pipe(webp())
@@ -179,8 +178,8 @@ gulp.task('clearTrash', function (done) {
 		path.src + 'sass/**/*.png',
 		path.src + 'sass/**/*.webp',
 		path.src + 'sass/**/*.svg',
-		path.dist + '**/*.sass',
-		path.dist + '**/*.scss',
+		// path.dist + '**/*.sass',
+		// path.dist + '**/*.scss',
 	])
 	done();
 });
