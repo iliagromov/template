@@ -1,5 +1,5 @@
 https://sitehere.ru/kak-nastroit-lokalnyj-server-na-ubuntu
-
+sudo chmod o+x $HOME
 
 
 sudo /etc/init.d/apache2 start — запуск локального сервера
