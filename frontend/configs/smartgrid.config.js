@@ -2,14 +2,25 @@ delete require.cache[require.resolve('./breakPoints.json')];
 const options = require('./breakPoints.json');
 module.exports = {
     outputStyle: 'sass', /* less || scss || sass || styl */
-    columns: 12, /* number of grid columns */
-    offset: '18px', /* gutter width px || % || rem */
-    mobileFirst: true, /* mobileFirst ? 'min-width' : 'max-width' */
+    columns: 4, /* number of grid columns */
+    offset: '0px', /* gutter width px || % || rem */
+    mobileFirst: false, /* mobileFirst ? 'min-width' : 'max-width' */
     container: {
-        maxWidth: '1920px', /* max-width оn very large screen */
-        fields: '18px' /* side fields */
+        maxWidth: '1400px', /* max-width оn very large screen */
+        fields: '60px' /* side fields */
     },
-    breakPoints : options.breakPoints,
+    breakPoints: {
+        md: {
+            width: "1365px",
+        },
+		sm: {
+            width: "1023px",
+        },
+        xs: {
+            width: "639px",
+            fields: "20px"
+        }
+	},
     // breakPoints: {
     //     xs: {
     //         width: '576px'
